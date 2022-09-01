@@ -1,0 +1,14 @@
+{
+	"title": "Simple Weapons: XM25",
+	"type":	"weapon",
+	"tags":	["fun", "roleplay"],
+	"ignore":
+	[
+		"*.bat",
+		"*.jpg",
+		"*.md",
+		".git*",
+		"source/*",
+		"LICENSE"
+	]
+}
