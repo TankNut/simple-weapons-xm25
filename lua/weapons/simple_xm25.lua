@@ -128,6 +128,8 @@ if CLIENT then
 		antialias = true,
 	})
 
+	local color = Color(255, 0, 0)
+
 	function SWEP:DrawHUDBackground()
 		BaseClass.DrawHUDBackground(self)
 
@@ -160,11 +162,13 @@ if CLIENT then
 			local forward = Angle(ang, EyeAngles().y, 0):Forward() * 10
 			local screen = (EyePos() + forward):ToScreen()
 
-			draw.DrawText("<>", "xm25_lcd", centerX, screen.y, Color(255, 0, 0), TEXT_ALIGN_CENTER)
+			local height = 14
+
+			draw.DrawText("<>", "xm25_lcd", centerX, screen.y - height, color, TEXT_ALIGN_CENTER)
 		end
 
-		draw.DrawText("TGT: " .. tgt, "xm25_lcd", centerX + offset, centerY + offset, Color(255, 0, 0))
-		draw.DrawText("RNG: " .. range, "xm25_lcd", centerX + offset, centerY + offset * 2, Color(255, 0, 0))
+		draw.DrawText("TGT: " .. tgt, "xm25_lcd", centerX + offset, centerY + offset, color)
+		draw.DrawText("RNG: " .. range, "xm25_lcd", centerX + offset, centerY + offset * 2, color)
 	end
 
 	function SWEP:DrawWorldModel()
