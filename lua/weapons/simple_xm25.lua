@@ -94,6 +94,8 @@ end
 local meters = (1 / 16) * 0.3048
 
 function SWEP:AltFire()
+	self.Primary.Automatic = false
+
 	local ply = self:GetOwner()
 	local dir = (ply:GetAimVector():Angle() + ply:GetViewPunchAngles()):Forward()
 
@@ -155,7 +157,7 @@ if CLIENT then
 
 			local ang = self:GetAngleOfAttack()
 
-			local forward = Angle(ang, EyeAngles().y, 0):Forward() * 100
+			local forward = Angle(ang, EyeAngles().y, 0):Forward() * 10
 			local screen = (EyePos() + forward):ToScreen()
 
 			draw.DrawText("<>", "xm25_lcd", centerX, screen.y, Color(255, 0, 0), TEXT_ALIGN_CENTER)
