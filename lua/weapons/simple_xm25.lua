@@ -106,16 +106,33 @@ function SWEP:AltFire()
 		filter = ply
 	})
 
-	local solve = TargetSolution(trace.HitPos, trace.StartPos, 3000, physenv.GetGravity() * 0.5, false)
+	local oldDistance = self:GetFuseDistance()
+
+	self:SetFuseDistance(0)
+	self:SetAngleOfAttack(0)
+
+	if not trace.Hit or trace.HitSky then -- Nothing to range against
+		return
+	end
+
 	local distance = trace.StartPos:Distance(trace.HitPos)
 
-	if math.Round(distance * meters) != math.Round(self:GetFuseDistance() * meters) and trace.Hit and not trace.HitSky and math.Round(distance * meters) <= 999 and solve == solve then
-		self:SetFuseDistance(distance)
-		self:SetAngleOfAttack(-math.deg(solve))
-	else
-		self:SetFuseDistance(0)
-		self:SetAngleOfAttack(0)
+	if math.Round(distance * meters) > 999 then -- Out of range
+		return
 	end
+
+	local solve = TargetSolution(trace.HitPos, trace.StartPos, 3000, physenv.GetGravity() * 0.5, false)
+
+	if solve != solve then -- No solution
+		return
+	end
+
+	if math.Round(distance) == math.Round(oldDistance) then -- Clear range
+		return
+	end
+
+	self:SetFuseDistance(distance)
+	self:SetAngleOfAttack(-math.deg(solve))
 end
 
 if CLIENT then
