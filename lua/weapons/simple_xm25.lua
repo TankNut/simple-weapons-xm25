@@ -16,7 +16,7 @@ SWEP.UseHands = true
 SWEP.ViewModelTargetFOV = 54
 
 SWEP.ViewModel = Model("models/simple_weapons/weapons/c_xm25.mdl")
-SWEP.WorldModel = Model("models/ma85_mw3/xm25/worldmodel.mdl")
+SWEP.WorldModel = Model("models/simple_weapons/weapons/w_xm25.mdl")
 
 SWEP.HoldType = "ar2"
 SWEP.LowerHoldType = "passive"
