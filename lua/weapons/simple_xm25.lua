@@ -47,8 +47,8 @@ SWEP.ViewOffset = Vector(0, -1, 0)
 function SWEP:SetupDataTables()
 	BaseClass.SetupDataTables(self)
 
-	self:AddNetworkVar("Float", "FuseDistance")
-	self:AddNetworkVar("Float", "AngleOfAttack")
+	self:NetworkVar("Float", "FuseDistance")
+	self:NetworkVar("Float", "AngleOfAttack")
 end
 
 function SWEP:FireWeapon()
